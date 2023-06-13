@@ -47,42 +47,103 @@ If the control input changes to AB = 10, then all the gates are restricted excep
  
  
 ### Procedure
-/* write all the steps invloved */
+Step 1:
+Open Quartus II and select new project . Open new file at the verilog.
 
+Step 2:
+Module Declaration. Module should have the file name.
 
+Step 3:
+Input-Output Delecaration.
 
+Step 4:
+Use wire to define the functionality of logic circuits.
+
+Step 5:
+End the module.
+
+Step 6:
+Run the program and choose RTL viewer to get RTL realization.
+
+### Procedure:
+Step 1: Open Quartus II and select new project . Open new file at the verilog.  
+Step 2: Module Declaration. Module should have the file name.  
+Step 3: Input-Output Delecaration.  
+Step 4: Use wire to define the functionality of logic circuits.  
+Step 5: End the module.  
+Step 6: Run the program and choose RTL viewer to get RTL realization.  
 ### PROGRAM 
-/*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
-*/
+```
+Program for flipflops  and verify its truth table in quartus using Verilog programming.
+Developed by: SUDHAKAR K
+RegisterNumber:212222240107
+MULTIPLEXER:-
+module mux(i0,i1,i2,i3,s0,s1,y);
+input i0,i1,i2,i3,s0,s1;
+output y;
+wire p,q,r,s,s0c,s1c;
+not(s0c,s0);
+not(s1c,s1);
+and(p,s0c,s1c,i0);
+and(q,s0c,s1,i1);
+and(r,s0,s1c,i2);
+and(s,s0,s1,i3);
+or(y,p,q,r,s);
+endmodule 
+```
+```
+DEMULTIPLEXER:-
+module mux(y0,y1,y2,y3,s0,s1,i);
+input s0,s1,i;
+output y0,y1,y2,y3;
+wire s0c,s1c;
+nor(s0c,s0);
+nor(s1c,s1);
+and(y0,i,s0c,s1c);
+and(y1,i,s0c,s1);
+and(y2,i,s0,s1c);
+and(y3,i,s0,s1);
+endmodule
+```
+
+### RTL LOGIC  :
+- MULTIPLEXER:  
+![215489018-83515ace-7db6-445d-bda2-81ab08de2d73](https://user-images.githubusercontent.com/118707073/215754259-d9b9f3e1-4398-4930-9759-fcab8f373f7b.png)
 
 
 
+- DEMULTIPLEXER:   
+![215489239-155dc351-7c33-482a-abb0-252659fe84f4](https://user-images.githubusercontent.com/118707073/215754312-5eaabe6e-328d-47da-b8d4-b02ff579acba.png)
+
+
+### TIMING DIGRAMS
+- MULTIPLEXER:  
+  - when I0=1:
+  ![215489708-794bd67c-4c83-4aeb-82fe-8252378e388f](https://user-images.githubusercontent.com/118707073/215754961-3731f1f2-4801-4854-ac20-20055febb250.png)
+
+  - when I1=1:  
+  ![215489746-cbcedb65-7a2d-45d4-a21d-694bc388f8f6](https://user-images.githubusercontent.com/118707073/215754992-9de0aa85-1000-4aa7-9197-0ea17ab13eaf.png)
+
+  - when I2=1:  
+  ![215489815-e2862823-fdd6-4da2-b2ea-bcd8ff551dbd](https://user-images.githubusercontent.com/118707073/215755024-a8bdca44-c45b-46cc-a669-caa669967c85.png)
+
+  - when I3=1:  
+  ![215489876-71867452-0a5c-4904-84d7-7f17f4276634](https://user-images.githubusercontent.com/118707073/215755105-3415a57a-e9aa-4c7b-b979-39b4d2536d87.png)
+
+  
+- DEMULTIPLEXER:  
+![215490016-b48d9d81-a649-4cfe-81e3-bdf7088f2892](https://user-images.githubusercontent.com/118707073/215755252-6d8d1e4e-cd5d-4b20-b513-312894476706.png)
+
+
+### TRUTH TABLE
+- MULTIPLEXER:  
+![c8](https://user-images.githubusercontent.com/118707073/215755797-283451e0-7432-447f-8fe3-5b08e3f98796.png)
+
+- DEMULTIPLEXER:  
+![c9](https://user-images.githubusercontent.com/118707073/215755831-66906291-9e3c-481c-b78d-5969a92c212b.png)
 
 
 
-### RTL LOGIC  
-
-
-
-
-
-
-
-
-### TIMING DIGRAMS  
-
-
-
-
-
-### TRUTH TABLE 
-
-
-
-
-
-
-### RESULTS 
+### RESULTS:  
+4 X1 multiplexer and 1X4 de multiplexer has been implemented using verilog and outputs are validated.
